@@ -1,7 +1,14 @@
 import p5 from "p5";
 
-function setup(p5: p5, canvasElement: Element): void {
-  p5.createCanvas(500, 500).parent(canvasElement);
+function initializeCanvas(p5: p5, canvasElement: HTMLElement, width: number, height: number): void {
+  const renderer = p5.createCanvas(width, height).parent(canvasElement);
+  const htmlElement = (renderer.elt as HTMLElement);
+  htmlElement.style.width = null;
+  htmlElement.style.height = null;
+}
+
+function setup(p5: p5, canvasElement: HTMLElement): void {
+  initializeCanvas(p5, canvasElement, 500, 500);
   p5.noLoop();
 
   p5.background(0);
